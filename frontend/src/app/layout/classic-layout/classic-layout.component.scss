@@ -1,0 +1,31 @@
+.inner-layout {
+    min-height: 80vh;
+}
+
+.logo {
+    color: white;
+}
+
+.header-menu {
+    text-align: right;
+}
+
+.logout {
+    text-align: right;
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+li {
+    font-size: 12px;
+}
+
+.recently-accessed {
+    padding-left: 24px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+}

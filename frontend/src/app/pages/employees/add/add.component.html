@@ -1,0 +1,80 @@
+<nz-content>
+    <nz-breadcrumb>
+        <nz-breadcrumb-item (click)="navigateTo('/home')">Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item (click)="navigateTo('/employees')">Employees</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Create</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-card [style]="'margin-top: 24px'">
+        <h2>Create Employee</h2>
+        <nz-divider></nz-divider>
+        <form nz-form>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="userName">User Name</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input id="userName" [(ngModel)]="formData.user_name" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName">First Name</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input id="firstName" [(ngModel)]="formData.first_name" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName">Last Name</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input id="lastName" [(ngModel)]="formData.last_name" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input type="email" id="email" [(ngModel)]="formData.email" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="date">Birth Date</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input type="date" id="date" [(ngModel)]="formData.birthdate" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="basicSalary">Basic Sallary</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <input nz-input type="number" id="basicSalary" [(ngModel)]="formData.basic_salary" [ngModelOptions]="{standalone: true}" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="status">Status</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <nz-select nzMode="default" nzPlaceHolder="Select Status" [(ngModel)]="formData.status" [ngModelOptions]="{standalone: true}">
+                      <nz-option *ngFor="let option of statusOptions" [nzLabel]="option" [nzValue]="option"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="group">Group</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24">
+                    <nz-select nzMode="default" nzPlaceHolder="Select Group" [(ngModel)]="formData.group" [ngModelOptions]="{standalone: true}">
+                      <nz-option *ngFor="let group of groupOptions" [nzLabel]="group" [nzValue]="group"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="description">Description</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please enter report details">
+                    <nz-textarea-count [nzMaxCharacterCount]="100">
+                        <textarea rows="4" [(ngModel)]="formData.description" nz-input [ngModelOptions]="{standalone: true}"></textarea>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+                    (click)="submit()"
+                    >Submit</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-card>
+</nz-content>

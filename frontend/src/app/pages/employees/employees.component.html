@@ -1,0 +1,75 @@
+<nz-card [style]="'margin-top: 24px'">
+  <button nz-button [nzType]="'primary'" (click)="create()">Create</button>
+
+  <nz-divider></nz-divider>  
+  <form nz-form class="ant-advanced-search-form">
+      <div nz-row [nzGutter]="24">
+          <div nz-col [nzSpan]="12">
+              <nz-form-item>
+                  <nz-form-label>Name</nz-form-label>
+                  <nz-form-control>
+                      <input nz-input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" />
+                  </nz-form-control>
+              </nz-form-item>
+          </div>
+          <div nz-col [nzSpan]="12">
+            <nz-form-item>
+              <nz-form-label>Status</nz-form-label>
+              <nz-form-control>
+                  <nz-select nzMode="default" nzPlaceHolder="Select status" [(ngModel)]="selectedStatus" [ngModelOptions]="{standalone: true}">
+                    <nz-option *ngFor="let option of statusOptions" [nzLabel]="option" [nzValue]="option"></nz-option>
+                  </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+      </div>
+      <div nz-row>
+          <div nz-col [nzSpan]="24" class="search-area">
+              <button nz-button [nzType]="'primary'" (click)="searchForm()">Search</button>
+              <button nz-button (click)="clearForm()">Clear</button>
+          </div>
+      </div>
+  </form>
+
+  <nz-table 
+      [nzLoading]="loading"
+      [nzData]="employees"
+      [nzPageIndex]="pageIndex"
+      [nzPageSize] = "pageSize"
+      [nzTotal]="total"
+      [nzFrontPagination]="false"
+      (nzQueryParams)="onQueryParamsChange($event)"
+      >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>
+            {{ employee.first_name }} {{ employee.last_name }}
+          </td>
+          <td>
+            {{ employee.user_name }}
+          </td>
+          <td>
+            {{ employee.email }}
+          </td>
+          <td>
+            {{ employee.status }}
+          </td>
+          <td>
+            <div style="display: flex; justify-content: space-around;">
+              <button nz-button class="yellow-button" [nzType]="'default'" (click)="show(employee)" >Details</button>
+              <button nz-button class="red-button" [nzType]="'default'" (click)="delete(employee)">Delete</button>
+            </div>
+        </td>
+        </tr>
+      </tbody>
+  </nz-table>
+</nz-card>
